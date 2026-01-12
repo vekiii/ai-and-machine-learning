@@ -4,6 +4,7 @@ Ovaj projekat istražuje biološki skup podataka o oposumima kroz tri ključna M
 
 ## 🗂️ O skupu podataka
 Skup podataka sadrži morfološke mere (dužine tela, glave, repa, širinu lobanje, itd.) jedinki oposuma prikupljenih sa različitih lokacija u Australiji. Podaci su skalirani korišćenjem `StandardScaler` pre procesa modelovanja.
+Link do skupa podataka: https://www.kaggle.com/datasets/abrambeyer/openintro-possum
 
 ---
 
