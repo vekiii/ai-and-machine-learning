@@ -1,47 +1,48 @@
-# 📊 Analiza i klasifikacija morfoloških karakteristika oposuma
+# 📊 Analysis and Classification of Morphological Characteristics of Possums
 
-Ovaj projekat istražuje biološki skup podataka o oposumima kroz tri ključna ML problema: **klasifikaciju geografske regije**, **klasifikaciju pola** i **regresiju starosti**. Glavni fokus rada je na **interpretabilnosti modela (XAI)** i razumevanju razloga zašto modeli greše u specifičnim biološkim scenarijima.
+This project explores a biological dataset on possums through three key machine learning problems: **geographical region classification**, **sex classification**, and **age regression**. The main focus of the study is **model interpretability (XAI)** and understanding why models fail in specific biological scenarios.
 
-## 🗂️ O skupu podataka
-Skup podataka sadrži morfološke mere (dužine tela, glave, repa, širinu lobanje, itd.) jedinki oposuma prikupljenih sa različitih lokacija u Australiji. Podaci su skalirani korišćenjem `StandardScaler` pre procesa modelovanja.
-Link do skupa podataka: https://www.kaggle.com/datasets/abrambeyer/openintro-possum
-
----
-
-## 🔍 Ključni nalazi i interpretabilnost
-
-### 1. Klasifikacija regije (Uspeh)
-* **Model:** Logistička regresija / Random Forest.
-* **Rezultat:** Visoka preciznost i stabilnost.
-* **XAI uvid (SHAP):** Analiza je otkrila da je **dužina uva (`earconch`)** najvažniji prediktor. Oposumi iz Viktorije imaju značajno drugačiju morfologiju uva u odnosu na ostale populacije, što omogućava modelu laku diferencijaciju.
-
-### 2. Klasifikacija pola (Problem biološkog preklapanja)
-* **Problem:** Model dostiže tačnost od svega **~65%**.
-* **Lasso (L1) redukcija:** Korišćenje L1 penalizacije rezultovalo je svođenjem koeficijenata većine varijabli na nulu, što sugeriše da ne postoji jasan morfološki "potpis" za pol.
-* **LIME analiza:** Detaljnim uvidom u pojedinačne greške (npr. mužjak klasifikovan kao ženka), uočeno je da individualne varijacije u veličini (grudi, stomak) često nadvladavaju polne razlike. 
-* **Zaključak:** Poređenjem tačno i netačno klasifikovanih mužjaka, utvrđeno je da model donosi odluke na osnovu "šuma" u podacima, jer su morfološke mere polova previše slične.
-
-### 3. Predviđanje starosti (Nizak signal)
-* **Model:** Support Vector Regression (SVR).
-* **Rezultat:** $R^2 \approx 0.15$.
-* **Interpretabilnost:** SHAP vrednosti su visoko koncentrisane oko nule, što matematički potvrđuje da fizičke mere tela nisu pouzdan indikator starosti jedinke u ovom uzorku.
+## 🗂️ About the dataset
+The dataset contains morphological measurements (body, head, and tail lengths, skull width, etc.) of possum individuals collected from different locations across Australia. The data were scaled using `StandardScaler` prior to the modeling process.  
+Dataset link: https://www.kaggle.com/datasets/abrambeyer/openintro-possum
 
 ---
 
-## 🛠️ Tehnologije i metode
-* **Programski jezik:** Python
-* **Biblioteke:** `pandas`, `numpy`, `scikit-learn`
-* **Interpretabilnost (XAI):** `SHAP` (Globalna objašnjenja), `LIME` (Lokalna objašnjenja)
-* **Redukcija dimenzionalnosti:** PCA (Principal Component Analysis), L1 (Lasso) regularizacija
+## 🔍 Key findings and interpretability
+
+### 1. Region classification (Successful)
+* **Model:** Logistic Regression / Random Forest  
+* **Result:** High accuracy and stability  
+* **XAI insight (SHAP):** The analysis revealed that **ear conch length (`earconch`)** is the most important predictor. Possums from Victoria exhibit significantly different ear morphology compared to other populations, allowing the model to easily distinguish them.
+
+### 2. Sex classification (Biological overlap problem)
+* **Problem:** The model achieves an accuracy of only **~65%**  
+* **Lasso (L1) reduction:** The use of L1 regularization resulted in most variable coefficients being shrunk to zero, suggesting that there is no clear morphological “signature” for sex  
+* **LIME analysis:** A detailed inspection of individual errors (e.g., a male classified as female) showed that individual size variations (chest, abdomen) often override sex-based differences  
+* **Conclusion:** By comparing correctly and incorrectly classified males, it was determined that the model makes decisions based on noise in the data, as the morphological measurements of the two sexes are too similar
+
+### 3. Age prediction (Low signal)
+* **Model:** Support Vector Regression (SVR)  
+* **Result:** $R^2 \approx 0.15$  
+* **Interpretability:** SHAP values are highly concentrated around zero, mathematically confirming that physical body measurements are not a reliable indicator of an individual’s age in this sample
 
 ---
 
-## 📈 Finalni zaključak
-Projekat demonstrira važnost **objašnjivog AI-a**. Umesto da se fokusiramo samo na niske metrike tačnosti kod pola i godina, upotrebom SHAP i LIME metoda uspeli smo da naučno dokažemo da je problem u **biološkom preklapanju karakteristika**, a ne u samoj arhitekturi modela.
+## 🛠️ Technologies and methods
+* **Programming language:** Python  
+* **Libraries:** `pandas`, `numpy`, `scikit-learn`, seaborn...
+* **Interpretability (XAI):** `SHAP` (global explanations), `LIME` (local explanations)
+* **Dimensionality reduction:** PCA (Principal Component Analysis), L1 (Lasso) regularization
 
 ---
 
-### Kako pokrenuti projekt?
-1. Klonirajte repozitorijum: `git clone [URL_REPOS_OVDE]`
-2. Instalirajte zavisnosti: `pip install pandas sklearn shap lime matplotlib seaborn`
-3. Pokrenite Jupyter Notebook: `jupyter notebook`
+## 📈 Final conclusion
+This project demonstrates the importance of **explainable AI**. Rather than focusing solely on low performance metrics for sex and age prediction, the use of SHAP and LIME allowed us to scientifically demonstrate that the issue lies in **biological overlap of features**, not in the model architecture itself.
+
+---
+
+### How to run the project?
+1. Clone the repository: `git clone [REPOSITORY_URL_HERE]`
+2. Install dependencies: `pip install pandas sklearn shap lime matplotlib seaborn`
+3. Launch Jupyter Notebook: `jupyter notebook`
+
