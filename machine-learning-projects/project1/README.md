@@ -42,7 +42,7 @@ This project demonstrates the importance of **explainable AI**. Rather than focu
 ---
 
 ### How to run the project?
-1. Clone the repository: `git clone [REPOSITORY_URL_HERE]`
+1. Clone the repository: `git clone [(https://github.com/vekiii/ai-and-machine-learning/blob/92dd4fd6f1068841e968f40e12cedbdad8d18501/machine-learning-projects/project1/Project1_Opossums_Eng.ipynb)]`
 2. Install dependencies: `pip install pandas sklearn shap lime matplotlib seaborn`
 3. Launch Jupyter Notebook: `jupyter notebook`
 
