@@ -4,6 +4,7 @@ This project explores customer attrition prediction in the banking sector with a
 
 ## 🚀 Project Overview
 The main goal of this project is to identify customers planning to close their accounts (Attrition). Rather than treating algorithms as "black boxes," this project emphasizes **Data Engineering** and distribution analysis, proving the principle that "smart data" is more important than the complexity of the algorithm itself.
+The project consists of **Theoretical Part in the form of a Seminar Paper** and **Practical Part in the form of a Jupyter Notebook**.
 
 ### Key Objectives:
 * **Quality Analysis**: Implementation of data quality dimensions (accuracy, completeness, consistency).
