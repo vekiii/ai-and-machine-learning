@@ -19,6 +19,11 @@ The project covers the full ML pipeline — from exploratory data analysis and t
 ├── best_lstm_cls.pt                   # Best LSTM classification weights
 ├── best_gru_cls.pt                    # Best GRU classification weights
 ├── best_cnn_cls.pt                    # Best CNN classification weights
+├── best_lstm_cls_optuna.pt            # Optuna LSTM classification weights
+├── best_gru_cls_optuna.pt             # Optuna GRU classification weights
+├── best_cnn_cls_optuna.pt             # Optuna CNN classification weights
+├── Project3_eng.ipynb                 # Version with manual embedding and training in the English language
+├── Project3_eng_type2.ipynb           # Updated version (class weighting, GloVe, bi-directional RNN, attention, Optuna) in the English language
 └── README.md                          # This file
 ```
 
