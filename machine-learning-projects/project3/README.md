@@ -14,20 +14,42 @@ The project covers the full ML pipeline — from exploratory data analysis and t
 ## 📁 Project Structure
 
 ```
-├── sentiment_analysis_bitcoin.ipynb   # Main notebook (all steps)
-├── bitcoin_tweets.csv                 # Raw dataset
-├── best_lstm_cls.pt                   # Best LSTM classification weights
-├── best_gru_cls.pt                    # Best GRU classification weights
-├── best_cnn_cls.pt                    # Best CNN classification weights
-├── best_lstm_cls_optuna.pt            # Optuna LSTM classification weights
-├── best_gru_cls_optuna.pt             # Optuna GRU classification weights
-├── best_cnn_cls_optuna.pt             # Optuna CNN classification weights
-├── Project3_eng.ipynb                 # Version with manual embedding and training in the English language
-├── Project3_eng_type2.ipynb           # Updated version (class weighting, GloVe, bi-directional RNN, attention, Optuna) in the English language
-└── README.md                          # This file
+├── eng                           # English versions
+  └── type2                          # Type2 files folder
+    ├── Project3_eng_type2.ipynb         # Type2 file
+    ├── best_lstm_cls_gpu.pt             # Best LSTM classification weights
+    ├── best_gru_cls_gpu.pt              # Best GRU classification weights
+    └── best_cnn_cls_gpu.pt              # Best CNN classification weights
+  └── type3                          # Type3 files folder
+    ├── Project3_eng_type3.ipynb         # Type3 file
+    ├── best_lst_cls_optuna.pt           # Optuna LSTM classification weights
+    ├── best_gru_cls_optuna.pt           # Optuna GRU classification weights
+    └── best_cnn_cls_optuna.pt           # Optuna CNN classification weights
+  └── Project3_eng_type1.ipynb       # Type1 file
+├── srb                           # Serbian versions
+  └── type2                          # Type2 files folder
+    ├── Project3_type2.ipynb             # Type2 file
+    ├── best_lstm_cls_gpu.pt             # Best LSTM classification weights
+    ├── best_gru_cls_gpu.pt              # Best GRU classification weights
+    └── best_cnn_cls_gpu.pt              # Best CNN classification weights
+  └── type3                          # Type3 files folder
+    ├── Project3_type3.ipynb             # Type3 file
+    ├── best_lst_cls_optuna.pt           # Optuna LSTM classification weights
+    ├── best_gru_cls_optuna.pt           # Optuna GRU classification weights
+    └── best_cnn_cls_optuna.pt           # Optuna CNN classification weights
+  └── Project3_eng_type1.ipynb       # Type1 file
+└── README.md                      # This file
 ```
 
 ---
+## THERE ARE 3 TYPES OF NOTEBOOKS:
+1. Type1 - the baseline notebook - the one that follows the pipeline and the READ.me file
+2. Type2 - upgraded version with class weights and additional tests at the end
+3. Type3 - upgraded with the attention mechanism, bi-directional recurrence, GloVe embeddings, and Optuna
+```
+
+---
+
 
 ## 📊 Dataset
 
