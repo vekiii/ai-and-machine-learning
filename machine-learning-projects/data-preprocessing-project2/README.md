@@ -56,5 +56,6 @@ In contrast, the **High-Quality** model shows better coherence, adherence to nat
 ### Installation
 ```bash
 pip install transformers datasets torch pandas matplotlib
-
-### Link to the dataset: https://huggingface.co/datasets/togethercomputer/RedPajama-Data-V2
+```
+### Link to the dataset:
+https://huggingface.co/datasets/togethercomputer/RedPajama-Data-V2
