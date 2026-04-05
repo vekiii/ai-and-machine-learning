@@ -1,60 +1,66 @@
-# Bank Customer Churn Prediction: A Data Quality & AutoML Approach
+# Bank Customer Churn Prediction: Data Quality, Modern ML, and AutoML
 
-This project explores customer attrition prediction in the banking sector with a primary focus on **Data Quality (DQ)**. The work demonstrates how rigorous statistical processing, cleaning, and data transformation directly impact the stability and precision of Machine Learning models.
+This project predicts customer attrition in banking, with a strong focus on **Data Quality (DQ)** and model reliability.
+It combines rigorous data profiling with modern machine learning, hyperparameter tuning, explainability, and AutoML benchmarking.
 
-## 🚀 Project Overview
-The main goal of this project is to identify customers planning to close their accounts (Attrition). Rather than treating algorithms as "black boxes," this project emphasizes **Data Engineering** and distribution analysis, proving the principle that "smart data" is more important than the complexity of the algorithm itself.
-The project consists of **Theoretical Part in the form of a Seminar Paper** and **Practical Part in the form of a Jupyter Notebook**.
+## Project Scope
+- Theoretical part: seminar papers (`Data_Quality_Seminarski.*`, `Data_Quality_Academic_Paper.*`)
+- Practical part: Jupyter notebooks, primarily:
+  - `practical_part_eng.ipynb` (English practical notebook)
 
-### Key Objectives:
-* **Quality Analysis**: Implementation of data quality dimensions (accuracy, completeness, consistency).
-* **Statistical Profiling**: Detailed analysis of central tendency, variance, and distribution moments (Skewness and Kurtosis).
-* **Hybrid Approach**: Benchmarking a manually optimized XGBoost model against **H2O AutoML** validation.
+## End-to-End Workflow (Enhanced Notebook)
+The current pipeline in `practical_part_eng.ipynb` includes:
 
----
+1. Data loading and initial quality checks
+2. Attribute typing and profiling
+3. Statistical characterization (mean/median/std/skewness/kurtosis)
+4. Distribution and normality analysis
+5. Correlation and redundancy analysis (Pearson, Spearman, VIF, Cramer's V)
+6. Anomaly detection (Z-score, IQR, Mahalanobis distance)
+7. Baseline modeling (pre-preprocessing)
+8. Feature engineering (interaction, ratio, domain-driven features)
+9. Data drift analysis (PSI + KS test)
+10. Preprocessing and transformations (winsorization, Box-Cox, standardization)
+11. Post-preprocessing modeling and baseline comparison
+12. Modern ML stack:
+   - LightGBM
+   - CatBoost
+   - SHAP interpretability
+   - Optuna hyperparameter search (XGBoost)
+13. H2O AutoML benchmark
+14. Final model comparison
 
-## 🛠️ Technologies Used
-* **Language:** Python 3.12.7
-* **Libraries:** `Pandas`, `NumPy`, `Scikit-Learn`, `XGBoost`, `Matplotlib`, `Seaborn`
-* **AutoML Platform:** `H2O.ai` (H2OAutoML)
-* **Environment:** Jupyter Notebook
+## Tech Stack
+- **Language:** Python (notebook-based workflow)
+- **Core libs:** `pandas`, `numpy`, `scipy`, `scikit-learn`
+- **Modeling:** `xgboost`, `lightgbm`, `catboost`
+- **Tuning:** `optuna`
+- **Explainability:** `shap`
+- **AutoML:** `h2o` (`H2OAutoML`)
+- **Visualization:** `matplotlib`, `seaborn`
 
----
+## Model Strategy
+The project compares multiple levels of modeling maturity:
+- **Baseline XGBoost** (raw/preprocessed comparison)
+- **Enhanced XGBoost** after feature engineering and preprocessing
+- **LightGBM** and **CatBoost** as modern gradient boosting alternatives
+- **Optuna-tuned XGBoost** for automated hyperparameter optimization
+- **H2O AutoML** as external benchmark and validation layer
 
-## 📊 Data Quality & Preprocessing Workflow
-The core of this project is a data preparation pipeline that includes:
+Final comparison (Section 14) is built dynamically from available model metrics, including Optuna results when that cell is executed.
 
-1. **Cleaning & Imputation**: Identification and treatment of missing values and "Unknown" categories.
-2. **Outlier Detection**: Implementation of **Mahalanobis Distance** to identify multivariate extreme values that could compromise model stability.
-3. **Normalization**: Use of **Box-Cox transformations** to correct skewness in financial attributes and achieve a normal distribution.
-4. **Dimensionality Reduction**: 
-    * Multicollinearity analysis via correlation matrices.
-    * Variance Inflation Factor (VIF) checks.
-    * Feature reduction by ~50% while maintaining predictive power.
----
+## Explainability
+Model interpretation is performed with **SHAP**:
+- feature importance summary
+- feature impact distribution
+- fallback to XGBoost built-in feature importance if SHAP fails in runtime
 
-## 🤖 Modeling & AutoML Validation
-The project compares two approaches to test the hypothesis regarding the importance of data preparation:
+## Dataset
+- Local file used in notebooks: `BankChurners.csv`
+- Source dataset (Kaggle):
+  - https://www.kaggle.com/datasets/sakshigoyal7/credit-card-customers
 
-### 1. Manual XGBoost
-The model was trained on a highly purified dataset (`data_normalized`). The focus was on achieving maximum precision with a minimal number of relevant attributes.
-
-### 2. H2O AutoML (Benchmark)
-AutoML was used as an objective verifier on the cleaned data.
-* **Winning Model**: `StackedEnsemble_AllModels` achieved an **AUC of 0.991**.
-* **Conclusion**: Validation confirmed that the manual dimensionality reduction did not cause a loss of critical information, as the AutoML achieved top-tier results on a significantly smaller number of features.
-
----
-
-## 📈 Results
-| Model | Metric (AUC) | Status |
-| :--- | :--- | :--- |
-| **XGBoost (Manual)** | ~0.97 | High Interpretability |
-| **H2O Stacked Ensemble** | **0.991** | Maximum Precision |
-
-**Key Takeaway:** High-quality data preparation allows for the development of more stable and simpler models that are easier to implement in real-world banking systems.
-
----
-
-## Dataset link:
-https://www.kaggle.com/datasets/jacopoferretti/superstore-dataset
+## Notes
+- Some components are optional at runtime (LightGBM, CatBoost, SHAP, Optuna, H2O).
+- The notebook includes safety checks and graceful fallbacks when a package is unavailable.
+- Exact metric values depend on your environment and executed notebook path/cells.
